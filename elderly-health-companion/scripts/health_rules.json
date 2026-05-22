@@ -1,0 +1,66 @@
+{
+  "version": "1.0",
+  "updated_at": "2026-05-20",
+  "patient": {
+    "name": "张爷爷",
+    "conditions": ["高血压"],
+    "medications": ["降压药 @18:00"],
+    "age_group": "elderly"
+  },
+  "heart_rate": {
+    "normal": { "min": 60, "max": 100, "level": "green" },
+    "watch": { "min": 100, "max": 110, "level": "yellow", "action": "提醒休息" },
+    "warning": { "min": 110, "max": 120, "duration_minutes": 5, "level": "orange", "action": "通知子女" },
+    "emergency_high": { "min": 120, "duration_minutes": 10, "level": "red", "action": "紧急Push" },
+    "warning_low": { "max": 50, "level": "orange", "action": "通知子女心率偏慢" }
+  },
+  "blood_pressure": {
+    "systolic": {
+      "normal": { "min": 90, "max": 130, "level": "green" },
+      "watch": { "min": 130, "max": 140, "level": "yellow", "action": "提醒按时吃药" },
+      "warning": { "min": 140, "max": 160, "level": "orange", "action": "通知子女" },
+      "emergency_high": { "min": 160, "level": "red", "action": "紧急Push" },
+      "emergency_low": { "max": 90, "level": "red", "action": "紧急Push（警惕低血压）" }
+    },
+    "diastolic": {
+      "normal": { "min": 60, "max": 85, "level": "green" },
+      "watch": { "min": 85, "max": 90, "level": "yellow", "action": "提醒按时吃药" },
+      "warning": { "min": 90, "max": 100, "level": "orange", "action": "通知子女" },
+      "emergency_high": { "min": 100, "level": "red", "action": "紧急Push" },
+      "emergency_low": { "max": 60, "level": "red", "action": "紧急Push（警惕低血压）" }
+    }
+  },
+  "fall_detection": {
+    "sensor_fall": { "level": "red", "action": "立即Push通知子女：疑似摔倒" },
+    "keyword_said_fell": { "keywords": ["摔了","摔倒了","摔跤","跌倒了"], "level": "red", "action": "立即Push通知子女" },
+    "keyword_nearly_fell": { "keywords": ["差点摔倒","差点摔","滑了一下","差点跌"], "level": "orange", "action": "通知子女：有摔倒风险" }
+  },
+  "medication": {
+    "took": { "level": "green", "action": "鼓励表扬" },
+    "missed_once": { "level": "yellow", "action": "15分钟后再次提醒" },
+    "missed_no_response": { "level": "orange", "action": "通知子女：今天没吃降压药" },
+    "missed_2days": { "level": "red", "action": "紧急Push：连续2天未服药" }
+  },
+  "keywords": {
+    "emergency": {
+      "keywords": ["胸闷","喘不过气","呼吸困难","胸痛"],
+      "level": "red",
+      "action": "紧急Push通知子女"
+    },
+    "warning": {
+      "keywords": ["头晕","头痛","心慌","心跳很快"],
+      "level": "orange",
+      "action": "测血压/询问后通知子女"
+    },
+    "watch": {
+      "keywords": ["不舒服","难受","没胃口","吃不下饭","不想动","没力气","疼","痛"],
+      "level": "yellow",
+      "action": "详细询问并记录"
+    }
+  },
+  "activity": {
+    "low_steps": { "threshold": 500, "level": "yellow", "action": "建议出门走走" },
+    "no_activity_2days": { "level": "orange", "action": "通知子女：活动量偏少" },
+    "no_reply_24h": { "level": "orange", "action": "通知子女：24小时未联系上" }
+  }
+}
